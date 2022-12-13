@@ -1,0 +1,39 @@
+.user-nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.user {
+    margin: 0 15px 0 0;
+    cursor: pointer;
+    font-size: 12px;
+    border: 1px solid #0f0;
+    padding: 2px 5px;
+}
+
+.user:last-child {
+    margin: 0;
+}
+
+.user-posts {
+    padding: 25px 0 0;
+    position: relative;
+}
+
+.anim-wrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    min-height: 100%;
+}
+
+.post {
+    position: relative;
+}
+
+.post p {
+    margin: 0 0 15px;
+}
