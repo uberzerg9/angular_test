@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf='finalize'>
   <div class="user-nav">
     <div class="user" *ngFor="let user of usersJson; index as i;" (click)="userLink = user.id; onSwipe();">
       {{user.id}}. {{user.name}}

@@ -39,7 +39,7 @@ const right = [
 })
 export class AppComponent implements OnInit {
   counter:number = 0;
-  loaded:boolean;
+  finalize:boolean;
 
   usersJson:any;
   postsJson:any;
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
   userLink:any;
 
   constructor(private itemsService:ItemsService) {
-    this.loaded = false;
+    this.finalize = false;
   }
   ngOnInit() {
     this.getUsers();
@@ -55,23 +55,37 @@ export class AppComponent implements OnInit {
   }
 
   getUsers():void {
-    this.loaded = false;
+    this.finalize = false;
     this.itemsService.getItems('https://jsonplaceholder.typicode.com/users')
       .subscribe(
         users => {
           this.usersJson = users;
-          this.loaded = true;
+          this.finalize = true;
+        },
+        err => {
+          console.log('HTTP error', err)
+          this.finalize = false;
+        },
+        () => {
+          console.log('HTTP request completed.')
         }
       )
   }
 
   getPosts():void {
-    this.loaded = false;
+    this.finalize = false;
     this.itemsService.getItems('https://jsonplaceholder.typicode.com/posts')
       .subscribe(
         users => {
           this.postsJson = users;
-          this.loaded = true;
+          this.finalize = true;
+        },
+        err => {
+          console.log('HTTP error', err)
+          this.finalize = false;
+        },
+        () => {
+          console.log('HTTP request completed.')
         }
       )
   }
@@ -79,4 +93,5 @@ export class AppComponent implements OnInit {
   onSwipe() {
     this.counter++;
   }
+
 }
